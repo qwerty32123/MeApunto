@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MeApunto</string>
+    <string name="usuario">usuario</string>
+    <string name="contrase_a">contraseña</string>
+</resources>
