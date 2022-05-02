@@ -11,6 +11,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -24,6 +26,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.politecnico.meapunto.modelos.RequestHandler;
+import com.politecnico.meapunto.modelos.SharedPrefManager;
+import com.politecnico.meapunto.modelos.URLs;
+import com.politecnico.meapunto.modelos.Usuario;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -59,49 +68,92 @@ public class LoginActivity extends AppCompatActivity {
 
             //Comprobamos si esta loggeado
 
-            AsyncTask<Void, Void, Map<String, String>> results = new InfoAsyncTask().execute();
-            Log.v("LoginActivity", results.toString());
 
 
-        }
+            class UserLogin extends AsyncTask<Void, Void, String> {
 
+                ProgressBar progressBar;
 
-    }
-
-    public class InfoAsyncTask extends AsyncTask<Void, Void, Map<String, String>> {
-        @Override
-        protected Map<String, String> doInBackground(Void... voids) {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
-
-            EditText textUsuario = (EditText) findViewById(R.id.editTextTextPersonName);
-            EditText textContrasena = (EditText) findViewById(R.id.editTextTextPassword);
-
-            String usuario = textUsuario.getText().toString();
-            String contrasena = textContrasena.getText().toString();
-
-            Map<String, String> info = new HashMap<>();
-
-            try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
-                String sql = "SELECT * FROM usuario where correo = " + usuario + " and contraseña =" + contrasena + " LIMIT 1";
-                PreparedStatement statement = connection.prepareStatement(sql);
-                ResultSet resultSet = statement.executeQuery();
-                if (resultSet.next()) {
-                    info.put("dni", resultSet.getString("dni"));
-
+                @Override
+                protected void onPreExecute() {
+                    super.onPreExecute();
+                   
                 }
-            } catch (Exception e) {
-                Log.e("InfoAsyncTask", "Error reading school information", e);
+
+                @Override
+                protected void onPostExecute(String s) {
+                    super.onPostExecute(s);
+
+
+                    try {
+                        //converting response to json object
+                        JSONObject obj = new JSONObject(s);
+
+                        //if no error in response
+                        if (!obj.getBoolean("error")) {
+                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                            //getting the user from the response
+                            JSONObject userJson = obj.getJSONObject("user");
+
+                            //creating a new user object
+                            Usuario user = new Usuario(
+                                    userJson.getString("DNI"),
+                                    userJson.getString("nombre"),
+                                    userJson.getString("apellidos"),
+                                    userJson.getString("direccion"),
+                                    userJson.getString("telefono"),
+
+                                    userJson.getString("correo"),
+                                    userJson.getString("descripcion"),
+                                    userJson.getString("contras"),
+                                    userJson.getString("genero"),
+                                    userJson.getString("nivelDeJuego"),
+                                    userJson.getString("Preferencia")
+                            );
+
+                            //storing the user in shared preferences
+                            SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
+                            Toast.makeText(getApplicationContext(), "Succes username & password", Toast.LENGTH_SHORT).show();
+                            //starting the profile activity
+                            finish();
+
+                            //startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                protected String doInBackground(Void... voids) {
+                    //creating request handler object
+                    RequestHandler requestHandler = new RequestHandler();
+
+                    //creating request parameters
+                    HashMap<String, String> params = new HashMap<>();
+                    params.put("correo", usuario);
+                    params.put("contraseña", contrasena);
+
+                    //returing the response
+                    return requestHandler.sendPostRequest(URLs.URL_LOGIN, params);
+                }
             }
 
-            return info;
+            UserLogin ul = new UserLogin();
+            ul.execute();
+
+
         }
 
+
+
+
     }
+
+//  /////////////////////////
 
 
         // FIREBASE Y GOOGLE
