@@ -172,12 +172,10 @@ public class LoginActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
-
             // logout al usuario para comprobar el funcionamiento
             // todo borrar esta linea ya que deslogea cualquier usuario loggeado
 
             if (SharedPrefManager.getInstance(this).isLoggedIn()) {
-                SharedPrefManager.getInstance(this).logout();
 
 
                 finish();
