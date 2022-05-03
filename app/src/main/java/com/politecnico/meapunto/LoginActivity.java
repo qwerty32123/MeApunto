@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -42,10 +43,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String driver = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/mapunto2";
-    private static final String USER = "dwes";
-    private static final String PASSWORD = "abc123.";
+
 
 
 
@@ -174,7 +172,14 @@ public class LoginActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
+
+            // logout al usuario para comprobar el funcionamiento
+            // todo borrar esta linea ya que deslogea cualquier usuario loggeado
+
             if (SharedPrefManager.getInstance(this).isLoggedIn()) {
+                SharedPrefManager.getInstance(this).logout();
+
+
                 finish();
                 startActivity(new Intent(this, LoginSplashScreenActivity.class));
             }
@@ -187,6 +192,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
+            findViewById(R.id.registerButton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), RegistrationActivity.class));
+
+                }
+            });
 
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                     .requestIdToken(getString(R.string.default_web_client_id))
@@ -200,6 +214,7 @@ public class LoginActivity extends AppCompatActivity {
             // Initialize Firebase Auth
             mAuth = FirebaseAuth.getInstance();
             // [END initialize_auth]
+
         }
 
         // [START on_start_check_user]

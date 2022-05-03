@@ -2,6 +2,7 @@ package com.politecnico.meapunto;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -45,6 +46,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private RadioButton gender_button;
     private Button select_date;
 
+
     private Calendar c;
     private DatePickerDialog dpd;
 
@@ -67,6 +69,7 @@ public class RegistrationActivity extends AppCompatActivity {
         direccion = findViewById(R.id.direccion_text);
         dni = findViewById(R.id.dni_text);
         telefono =findViewById(R.id.telefono_text);
+
 
         select_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,14 +125,12 @@ public class RegistrationActivity extends AppCompatActivity {
                             date_of_birth.getError() == null && password.getError() == null && policy.isChecked()) {
 //  codigo para registrar a un nuevo usuario aqui
 
+                        registerUser();
+
+
+
                     }
-                    nombre.setText("");
-                    apellidos.setText("");
-                    email.setText("");
-                    date_of_birth.setText("");
-                    password.setText("");
-                    policy.setChecked(false);
-                    policy.setError(null);
+
                 }
             }
         });

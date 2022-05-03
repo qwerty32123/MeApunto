@@ -44,7 +44,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="12dp"
         android:ems="10"
-        android:hint="@string/contrase_a"
+        android:hint="@string/contrasena"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -96,7 +96,7 @@
         android:layout_marginTop="32dp"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton"
         app:srcCompat="@drawable/facebook"
         android:background="@drawable/button_social"
         />
@@ -109,7 +109,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toStartOf="@+id/googleLogin"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton"
         app:srcCompat="@drawable/twitter"
 
         android:background="@drawable/button_social"
@@ -125,7 +125,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton"
         app:srcCompat="@drawable/google"
 
         android:background="@drawable/button_social"/>
