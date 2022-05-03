@@ -1,5 +1,5 @@
 package com.politecnico.meapunto;
-
+// https://www.javatpoint.com/android-volley-library-registration-login-logout
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -174,6 +174,10 @@ public class LoginActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
+            if (SharedPrefManager.getInstance(this).isLoggedIn()) {
+                finish();
+                startActivity(new Intent(this, LoginSplashScreenActivity.class));
+            }
 
 
             findViewById(R.id.googleLogin).setOnClickListener(new View.OnClickListener() {

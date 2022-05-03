@@ -13,9 +13,12 @@
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".LoginSplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.DayNight"
+            android:name=".RegistrationActivity"
             android:exported="false" />
+        <activity
+            android:name=".LoginSplashScreenActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -27,7 +30,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
