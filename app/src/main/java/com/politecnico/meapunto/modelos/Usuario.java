@@ -57,12 +57,12 @@ public class Usuario {
         this.descripcion = descripcion;
     }
 
-    public String getContras() {
-        return contras;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setContras(String contras) {
-        this.contras = contras;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     public String getGenero() {
@@ -89,7 +89,7 @@ public class Usuario {
         Preferencia = preferencia;
     }
 
-    private String DNI,nombre,apellidos,direccion,telefono,correo,descripcion, contras;
+    private String DNI,nombre,apellidos,direccion,telefono,correo,descripcion, contraseña;
 
     private String genero;
     private String nivelDeJuego;
@@ -98,7 +98,7 @@ public class Usuario {
 
 
 
-    public Usuario(String dni, String nombre, String apellidos, String direccion, String telefono, String correo, String descripcion, String contras, String genero, String nivelDeJuego, String preferencia) {
+    public Usuario(String dni, String nombre, String apellidos, String direccion, String telefono, String correo, String descripcion, String contraseña, String genero, String nivelDeJuego, String preferencia) {
         this.DNI = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -106,7 +106,7 @@ public class Usuario {
         this.telefono = telefono;
         this.correo = correo;
         this.descripcion = descripcion;
-        this.contras = contras;
+        this.contraseña = contraseña;
         this.genero = genero;
         this.nivelDeJuego = nivelDeJuego;
         this.Preferencia = preferencia;

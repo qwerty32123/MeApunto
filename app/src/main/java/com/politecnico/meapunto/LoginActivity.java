@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                    
                 }
 
+                @SuppressLint("LongLogTag")
                 @Override
                 protected void onPostExecute(String s) {
                     super.onPostExecute(s);
@@ -96,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                             //getting the user from the response
                             JSONObject userJson = obj.getJSONObject("user");
 
+
                             //creating a new user object
                             Usuario user = new Usuario(
                                     userJson.getString("DNI"),
@@ -106,10 +108,10 @@ public class LoginActivity extends AppCompatActivity {
 
                                     userJson.getString("correo"),
                                     userJson.getString("descripcion"),
-                                    userJson.getString("contras"),
+                                    userJson.getString("contraseña"),
                                     userJson.getString("genero"),
-                                    userJson.getString("nivelDeJuego"),
-                                    userJson.getString("Preferencia")
+                                    userJson.getString("nivel_juego"),
+                                    userJson.getString("preferencia")
                             );
 
                             //storing the user in shared preferences
@@ -117,13 +119,14 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Succes username & password", Toast.LENGTH_SHORT).show();
                             //starting the profile activity
                             finish();
-
-                            //startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                            Log.i("LoginSplashActivity","Starting to run");
+                            startActivity(new Intent(getApplicationContext(), LoginSplashScreenActivity.class));
                         } else {
-                            Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Invalid username or password22", Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        Log.e("OUTPUT LOGIN ERROR LoginActivity", "json error",e);
                     }
                 }
 

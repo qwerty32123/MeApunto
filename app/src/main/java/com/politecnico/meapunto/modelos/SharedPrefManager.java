@@ -58,7 +58,7 @@ public class SharedPrefManager {
         editor.putString(KEY_TELEFONO, user.getTelefono());
         editor.putString(KEY_DESCRIPCION, user.getDescripcion());
         editor.putString(KEY_NOMBRE, user.getNombre());
-        editor.putString(KEY_CONTRASENA, user.getContras());
+        editor.putString(KEY_CONTRASENA, user.getContraseña());
 
         //enum igual no funciona, no se si mappear los enums como string va salir bien
         editor.putString(KEY_GENERO, user.getGenero().toString());
