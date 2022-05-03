@@ -83,7 +83,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 dpd = new DatePickerDialog(RegistrationActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        date.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                        date_of_birth.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
                     }
                 }, day, month, year);
                 dpd.show();

@@ -247,7 +247,7 @@
         android:layout_marginBottom="1dp"
         android:backgroundTint="@color/loginButtonBG"
         android:ems="10"
-        android:hint="@string/introducecontraseña"
+        android:hint="@string/introduce_el_dni"
         android:importantForAutofill="no"
         android:inputType="textPassword"
         android:textColor="#000000"
