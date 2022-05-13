@@ -2,7 +2,10 @@ package com.politecnico.meapunto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.politecnico.meapunto.modelos.SharedPrefManager;
@@ -23,5 +26,10 @@ public class LoginSplashScreenActivity extends AppCompatActivity {
             usuarioTextView.setText(user.getNombre());
 
         }
+        finish();
+
+        startActivity(new Intent(getApplicationContext(), MenuPrincipal.class));
+
+
     }
 }
