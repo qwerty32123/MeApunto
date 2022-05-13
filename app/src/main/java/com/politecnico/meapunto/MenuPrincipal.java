@@ -86,7 +86,7 @@ public class MenuPrincipal extends AppCompatActivity
                 title = R.string.menu_share;
                 break;
             case R.id.nav_map:
-                finish();
+                //finish();
                 Log.i("MapActivity","Starting to run");
                 startActivity(new Intent(getApplicationContext(), MapActivity.class));
                 return false;

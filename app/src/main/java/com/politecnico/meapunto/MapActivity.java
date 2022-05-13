@@ -26,6 +26,7 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -51,11 +52,13 @@ public class MapActivity  extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
     }
 
     @Override
@@ -136,7 +139,7 @@ public class MapActivity  extends FragmentActivity implements OnMapReadyCallback
                 }
 
                 //Place current location marker
-                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                LatLng latLng = new LatLng(42.81714803390474,  -1.6551470445034167);
                 MarkerOptions markerOptions = new MarkerOptions();
                 markerOptions.position(latLng);
                 markerOptions.title("Current Position");
@@ -147,7 +150,9 @@ public class MapActivity  extends FragmentActivity implements OnMapReadyCallback
                         .title("Current Position"));
 
                 //move map camera
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11));
+               // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11));
+//,                CameraUpdate point = CameraUpdateFactory.newLatLng(new LatLng(42.81714803390474,  -1.6551470445034167));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(42.81714803390474,  -1.6551470445034167), 12.0f));
             }
         }
     };
@@ -206,6 +211,7 @@ public class MapActivity  extends FragmentActivity implements OnMapReadyCallback
 
                         fusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
                         mMap.setMyLocationEnabled(true);
+
                     }
 
                 } else {
