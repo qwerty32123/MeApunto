@@ -5,9 +5,9 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/Jugar"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_camera" />
+            android:title="@string/jugar" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
@@ -27,9 +27,9 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_share"
+                    android:id="@+id/nav_contactar"
                     android:icon="@drawable/ic_menu_share"
-                    android:title="@string/menu_share" />
+                    android:title="@string/contactanos" />
 
                 <item
                     android:id="@+id/nav_map"

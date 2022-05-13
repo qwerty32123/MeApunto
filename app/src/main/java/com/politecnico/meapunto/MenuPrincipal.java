@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,8 +18,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.Map;
 
 public class MenuPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -73,7 +72,7 @@ public class MenuPrincipal extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int title = 0;
         switch (menuItem.getItemId()) {
-            case R.id.nav_camera:
+            case R.id.Jugar:
                 title = R.string.menu_camera;
                 break;
             case R.id.nav_gallery:
@@ -82,8 +81,11 @@ public class MenuPrincipal extends AppCompatActivity
             case R.id.nav_manage:
                 title = R.string.menu_tools;
                 break;
-            case R.id.nav_share:
+            case R.id.nav_contactar:
                 title = R.string.menu_share;
+                //todo https://stackoverflow.com/questions/56201480/add-a-text-field-on-button-click-to-second-main-activity
+
+                LinearLayout linearlayout = findViewById(R.id.home_content);
                 break;
             case R.id.nav_map:
                 //finish();

@@ -24,12 +24,14 @@
     <string name="menu_camera">Camera</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
+    <string name="menu_share">Informacion de contacto: </string>
     <string name="menu_send">Send</string>
     <string name="menu_group">Group</string>
     <string name="copyright">© Daniel Medina - danielme.com</string>
     <string name="donde_estamos">Donde estamos</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyC8E4qul8j6kJp0nBue_HdPkz3J6x15Fdc</string>
+    <string name="contactanos">Contactanos</string>
+    <string name="jugar">Jugar</string>
 
 
 </resources>
