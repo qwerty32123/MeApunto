@@ -1,7 +1,9 @@
 package com.politecnico.meapunto;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -15,6 +17,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Map;
 
 public class MenuPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -67,7 +71,7 @@ public class MenuPrincipal extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        int title;
+        int title = 0;
         switch (menuItem.getItemId()) {
             case R.id.nav_camera:
                 title = R.string.menu_camera;
@@ -81,9 +85,11 @@ public class MenuPrincipal extends AppCompatActivity
             case R.id.nav_share:
                 title = R.string.menu_share;
                 break;
-            case R.id.nav_send:
-                title = R.string.menu_send;
-                break;
+            case R.id.nav_map:
+                finish();
+                Log.i("MapActivity","Starting to run");
+                startActivity(new Intent(getApplicationContext(), MapActivity.class));
+                return false;
             default:
                 throw new IllegalArgumentException("menu option not implemented!!");
         }

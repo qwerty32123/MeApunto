@@ -32,9 +32,9 @@
                     android:title="@string/menu_share" />
 
                 <item
-                    android:id="@+id/nav_send"
-                    android:icon="@drawable/ic_menu_send"
-                    android:title="@string/menu_send" />
+                    android:id="@+id/nav_map"
+                    android:icon="@drawable/ic_menu_map"
+                    android:title="@string/donde_estamos" />
             </group>
         </menu>
     </item>
