@@ -39,10 +39,10 @@ public class MenuPrincipal extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
-//
-//        MenuItem menuItem = navigationView.getMenu().getItem(0);
-//        onNavigationItemSelected(menuItem);
-//        menuItem.setChecked(true);
+
+        MenuItem menuItem = navigationView.getMenu().getItem(0);
+        onNavigationItemSelected(menuItem);
+        menuItem.setChecked(true);
 
         drawerLayout.addDrawerListener(this);
 
