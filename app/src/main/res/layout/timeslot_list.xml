@@ -9,12 +9,6 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="120dp"
-            android:layout_height="90dp"
-            android:padding="4dp" />
-
         <TextView
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
@@ -31,37 +25,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewTitle"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="11dp"
             android:layout_toRightOf="@id/imageView"
             android:text="13.3 Inch, 256 GB"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
-        <TextView
-            android:id="@+id/textViewRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textViewShortDesc"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/imageView"
-            android:background="@color/colorPrimary"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:text="4.7"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textViewPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textViewRating"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/imageView"
-            android:text="INR 56990"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textStyle="bold" />
 
     </RelativeLayout>
 

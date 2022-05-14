@@ -73,15 +73,15 @@ public class MenuPrincipal extends AppCompatActivity
         int title = 0;
         switch (menuItem.getItemId()) {
             case R.id.Jugar:
-                Log.i("TimeSlootChooseActivity","Starting to run");
-                startActivity(new Intent(getApplicationContext(),TimeSlotChoose.class));
+                title = R.string.menu_camera;
                 break;
             case R.id.nav_gallery:
                 title = R.string.menu_gallery;
                 break;
             case R.id.nav_manage:
-                title = R.string.menu_tools;
-                break;
+                Log.i("TimeSlootChooseActivity","Starting to run");
+                startActivity(new Intent(getApplicationContext(),TimeSlotChoose.class));
+                return false;
             case R.id.nav_contactar:
                 title = R.string.menu_share;
                 //todo https://stackoverflow.com/questions/56201480/add-a-text-field-on-button-click-to-second-main-activity

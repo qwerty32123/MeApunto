@@ -42,6 +42,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.Produc
 //                .into(holder.imageView);
 
         holder.textViewTitle.setText(product.getDescription());
+        holder.textViewShortDesc.setText(String.valueOf(product.getId()));
 
     }
 
@@ -52,12 +53,13 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.Produc
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewTitle;
+        TextView textViewTitle,textViewShortDesc;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
 
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
+            textViewShortDesc = itemView.findViewById(R.id.textViewShortDesc);
 
         }
 
