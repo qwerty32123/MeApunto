@@ -2,6 +2,8 @@ package com.politecnico.meapunto;
 
 import android.content.Context;
 
+
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -14,22 +16,26 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.politecnico.meapunto.modelos.TimeSlot;
 
+
+// como implementar el click en un item del recycler view https://youtu.be/69C1ljfDvl0
 import java.util.List;
 
 public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ProductViewHolder> {
     private Context mCtx;
+    private OnNoteListener mOnNoteListener;
     private List<TimeSlot> productList;
 
-    public TimeSlotAdapter(Context mCtx, List<TimeSlot> productList) {
+    public TimeSlotAdapter(Context mCtx, List<TimeSlot> productList,OnNoteListener onNoteListener) {
         this.mCtx = mCtx;
         this.productList = productList;
+        this.mOnNoteListener=onNoteListener;
     }
 
     @Override
     public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.timeslot_list, null);
-        return new ProductViewHolder(view);
+        return new ProductViewHolder(view,mOnNoteListener);
     }
 
     @Override
@@ -42,7 +48,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.Produc
 //                .into(holder.imageView);
 
         holder.textViewTitle.setText(product.getDescription());
-        holder.textViewShortDesc.setText(String.valueOf(product.getId()));
+       // holder.textViewShortDesc.setText(String.valueOf(product.getId()));
 
     }
 
@@ -51,17 +57,28 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.Produc
         return productList.size();
     }
 
-    class ProductViewHolder extends RecyclerView.ViewHolder {
+    class ProductViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener {
 
         TextView textViewTitle,textViewShortDesc;
+        OnNoteListener onNoteListener;
 
-        public ProductViewHolder(View itemView) {
+        public ProductViewHolder(View itemView, OnNoteListener onNoteListener) {
             super(itemView);
 
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
-            textViewShortDesc = itemView.findViewById(R.id.textViewShortDesc);
+            textViewTitle.setOnClickListener(this);
+            this.onNoteListener=onNoteListener;
 
         }
+
+        @Override
+        public void onClick(View view) {
+            onNoteListener.onNoteClick(getBindingAdapterPosition());
+        }
+    }
+
+    public interface OnNoteListener{
+        void onNoteClick(int position);
 
     }
 
