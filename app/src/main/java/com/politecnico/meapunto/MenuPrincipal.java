@@ -73,7 +73,8 @@ public class MenuPrincipal extends AppCompatActivity
         int title = 0;
         switch (menuItem.getItemId()) {
             case R.id.Jugar:
-                title = R.string.menu_camera;
+                Log.i("TimeSlootChooseActivity","Starting to run");
+                startActivity(new Intent(getApplicationContext(),TimeSlotChoose.class));
                 break;
             case R.id.nav_gallery:
                 title = R.string.menu_gallery;
