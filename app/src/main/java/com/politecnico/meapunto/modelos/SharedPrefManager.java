@@ -29,6 +29,9 @@ public class SharedPrefManager {
     private static final String KEY_GENERO = "keygenero";
     private static final String KEY_NIVEL = "keynivel";
     private static final String KEY_PREFERENCIA = "keypreferencia";
+    private static final String KEY_FNACIMIENTO = "keyfnacimiento";
+
+
 
 
 
@@ -93,7 +96,9 @@ public class SharedPrefManager {
                 sharedPreferences.getString(KEY_CONTRASENA, null),
                 sharedPreferences.getString(KEY_GENERO, null),
                 sharedPreferences.getString(KEY_NIVEL, null),
-                sharedPreferences.getString(KEY_PREFERENCIA, null)
+                sharedPreferences.getString(KEY_PREFERENCIA, null),
+                sharedPreferences.getString(KEY_FNACIMIENTO, null)
+
 
         );
     }

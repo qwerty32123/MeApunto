@@ -14,6 +14,100 @@
  if(isset($_GET['apicall'])){
 
  switch($_GET['apicall']){
+case 'check_pista_hora_disponible'
+
+///////// START PISTAS GET
+ if(isTheseParametersAvailable(array('dia'))){
+
+  //getting the values
+
+  $dia = $_POST['dia'];
+
+
+
+  //checking if the user is already exist with this username or email
+  //as the email and username should be unique for every user
+  $stmt = $conn->prepare("SELECT * FROM agenda WHERE dia =   ?");
+  $stmt->bind_param("s",$dia);
+  $stmt->execute();
+  $stmt->store_result();
+
+  //if the user already exist in the database
+  if($stmt->num_rows > 0){
+  $response['error'] = true;
+  $response['message'] = 'User already registered';
+  $stmt->close();
+  }else{
+
+  //if user is new creating an insert query
+  $stmt = $conn->prepare("INSERT INTO usuario (DNI, nombre, apellidos, direccion,telefono,genero, fecha_nacimiento,correo,nivel_juego,preferencia,descripcion,validado,contraseña,activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  $stmt->bind_param("ssssssssssssss", $DNI,$nombre,$apellidos,$direccion,$telefono,$genero,$fecha_nacimiento,$correo,$nivel_juego,$preferencia,$descripcion,$validado,$contraseña,$activo);
+
+  //if the user is successfully added to the database
+  if($stmt->execute()){
+
+  //fetching the user back
+  $stmt = $conn->prepare("SELECT DNI, nombre, apellidos, direccion,telefono,genero, fecha_nacimiento,correo,nivel_juego,preferencia,descripcion,validado,contraseña,activo FROM usuario WHERE correo = ?");
+  $stmt->bind_param("s",$correo);
+  $stmt->execute();
+  $stmt->bind_result($DNI,$nombre,$apellidos,$direccion,$telefono,$genero,$fecha_nacimiento,$correo,$nivel_juego,$preferencia,$descripcion,$validado,$contraseña,$activo);
+  $stmt->fetch();
+
+  $user = array(
+  'DNI'=>$DNI,
+  'nombre'=>$nombre,
+  'apellidos'=>$apellidos,
+  'direccion'=>$direccion,
+   'telefono'=>$telefono,
+   'genero'=>$genero,
+   'fecha_nacimiento'=>$fecha_nacimiento,
+   'correo'=>$correo,
+    'nivel_juego'=>$nivel_juego,
+    'preferencia'=>$preferencia,
+    'descripcion'=>$descripcion,
+    'validado'=>$validado,
+     'contraseña'=>$contraseña,
+     'activo'=>$activo
+
+
+
+
+  );
+
+  $stmt->close();
+
+  //adding the user data in response
+  $response['error'] = false;
+  $response['message'] = 'User registered successfully';
+  $response['user'] = $user;
+  }
+  }
+
+  }else{
+  $response['error'] = true;
+  $response['message'] = 'required parameters are not available';
+  }
+
+
+
+  //in this part we will handle the registration
+
+  break;
+
+
+
+
+
+
+
+
+// END PISTAS GET
+
+
+
+
+
+
 
  case 'signup':
 
@@ -165,6 +259,28 @@
 
  break;
 ///////////////////////////////////////////////// LOGIN END/////////////////////////////////////////// L/////////////////////////////////////////// L/////////////////////////////////////////// L
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  default:
  $response['error'] = true;
  $response['message'] = 'Invalid Operation Called';

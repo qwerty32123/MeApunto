@@ -1,5 +1,7 @@
 package com.politecnico.meapunto.modelos;
 
+import java.sql.Date;
+
 public class Usuario {
     public String getDNI() {
         return DNI;
@@ -95,10 +97,20 @@ public class Usuario {
     private String nivelDeJuego;
     private String Preferencia;
 
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    private String fecha_nacimiento;
 
 
 
-    public Usuario(String dni, String nombre, String apellidos, String direccion, String telefono, String correo, String descripcion, String contraseña, String genero, String nivelDeJuego, String preferencia) {
+
+    public Usuario(String dni, String nombre, String apellidos, String direccion, String telefono, String correo, String descripcion, String contraseña, String genero, String nivelDeJuego, String preferencia,String FechaNacimiento) {
         this.DNI = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -110,5 +122,6 @@ public class Usuario {
         this.genero = genero;
         this.nivelDeJuego = nivelDeJuego;
         this.Preferencia = preferencia;
+        this.fecha_nacimiento = FechaNacimiento;
     }
 }

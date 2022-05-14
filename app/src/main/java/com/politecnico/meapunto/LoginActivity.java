@@ -53,6 +53,11 @@ public class LoginActivity extends AppCompatActivity {
         EditText textUsuario = (EditText) findViewById(R.id.editTextTextPersonName);
         EditText textContrasena = (EditText) findViewById(R.id.editTextTextPassword);
 
+
+
+
+
+
         String usuario = textUsuario.getText().toString();
         String contrasena = textContrasena.getText().toString();
 
@@ -109,7 +114,9 @@ public class LoginActivity extends AppCompatActivity {
                                     userJson.getString("contraseña"),
                                     userJson.getString("genero"),
                                     userJson.getString("nivel_juego"),
-                                    userJson.getString("preferencia")
+                                    userJson.getString("preferencia"),
+                                    userJson.getString("fecha_nacimiento")
+
                             );
 
                             //storing the user in shared preferences
@@ -172,15 +179,16 @@ public class LoginActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
+
             // logout al usuario para comprobar el funcionamiento
             // todo borrar esta linea ya que deslogea cualquier usuario loggeado
-
-            if (SharedPrefManager.getInstance(this).isLoggedIn()) {
-
-
-                finish();
-                startActivity(new Intent(this, LoginSplashScreenActivity.class));
-            }
+//
+//            if (SharedPrefManager.getInstance(this).isLoggedIn()) {
+//
+//
+//                finish();
+//                startActivity(new Intent(this, LoginSplashScreenActivity.class));
+//            }
 
 
             findViewById(R.id.googleLogin).setOnClickListener(new View.OnClickListener() {

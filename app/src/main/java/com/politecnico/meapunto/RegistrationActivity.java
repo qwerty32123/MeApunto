@@ -100,7 +100,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 gender_button = findViewById(selected_gender);
 
                 String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-                String datePattern = "^(1[0-2]|0[1-9])/(3[01]" + "|[12][0-9]|0[1-9])/[0-9]{4}$";
+
 
 
                 if (nombre.getText().toString().equals("")) {
@@ -113,8 +113,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     email.setError("Invalid email address");
                 } else if (date_of_birth.getText().toString().equals("")) {
                     date_of_birth.setError("Select date of birth");
-                } else if (!date_of_birth.getText().toString().trim().matches(datePattern)) {
-                    date_of_birth.setError("Date format should be 'mm/dd/yyyy'");
+
                 } else if (password.getText().toString().equals("")) {
                     password.setError("Empty password");
                 } else if(!policy.isChecked()) {
@@ -145,6 +144,7 @@ public class RegistrationActivity extends AppCompatActivity {
         final String password = this.password.getText().toString().trim();
         final String apellidos = this.apellidos.getText().toString().trim();
         final String fecha_nacimiento = this.date_of_birth.getText().toString().trim();
+
         final String direccion = this.direccion.getText().toString().trim();
         final String telefono = this.email.getText().toString().trim();
         final String DNI = this.dni.getText().toString().trim();
@@ -187,7 +187,9 @@ public class RegistrationActivity extends AppCompatActivity {
                                         userJson.getString("contraseña"),
                                         userJson.getString("genero"),
                                         userJson.getString("nivel_juego"),
-                                        userJson.getString("preferencia")
+                                        userJson.getString("preferencia"),
+                                        userJson.getString("fecha_nacimiento")
+
                                 );
 
                                 //storing the user in shared preferences

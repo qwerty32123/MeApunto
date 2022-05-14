@@ -5,4 +5,7 @@ public class URLs {
 
     public static final String URL_REGISTER = ROOT_URL + "signup";
     public static final String URL_LOGIN= ROOT_URL + "login";
+    public static final String URL_PISTAS_GET= ROOT_URL + "check_pista_hora_disponible";
+
+
 }
