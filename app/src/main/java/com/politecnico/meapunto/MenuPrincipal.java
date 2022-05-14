@@ -18,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
+import com.politecnico.meapunto.modelos.Pista;
 
 public class MenuPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -80,7 +81,7 @@ public class MenuPrincipal extends AppCompatActivity
                 break;
             case R.id.nav_manage:
                 Log.i("TimeSlootChooseActivity","Starting to run");
-                startActivity(new Intent(getApplicationContext(),TimeSlotChoose.class));
+                startActivity(new Intent(getApplicationContext(), PistaChoose.class));
                 return false;
             case R.id.nav_contactar:
                 title = R.string.menu_share;
