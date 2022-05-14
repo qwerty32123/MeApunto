@@ -4,6 +4,7 @@ package com.politecnico.meapunto;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -81,7 +82,7 @@ public class MenuPrincipal extends AppCompatActivity
                 break;
             case R.id.nav_manage:
                 Log.i("TimeSlootChooseActivity","Starting to run");
-                startActivity(new Intent(getApplicationContext(), PistaChoose.class));
+                startActivity(new Intent(getApplicationContext(), MenuJugarActivity.class));
                 return false;
             case R.id.nav_contactar:
                 title = R.string.menu_share;

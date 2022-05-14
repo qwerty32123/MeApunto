@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".MenuJugarActivity"
+            android:exported="false" />
+        <activity
             android:name=".PistaChoose"
             android:exported="false" />
         <activity
