@@ -66,7 +66,7 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
             }
         };
         AlertDialog.Builder builder = new AlertDialog.Builder(TimeSlotChoose.this);
-        builder.setMessage("Estas seguro de que quieres elegir esta hora?" + choosenSlot).setPositiveButton("Yes", dialogClickListener)
+        builder.setMessage("Estas seguro de que quieres elegir esta hora? " + choosenSlot).setPositiveButton("Si", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
 
 
