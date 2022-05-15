@@ -29,6 +29,16 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.Produc
         this.mOnNoteListener=onNoteListener;
     }
 
+
+    public List<TimeSlot> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<TimeSlot> productList) {
+        this.productList = productList;
+        notifyDataSetChanged();
+    }
+
     @Override
     public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);

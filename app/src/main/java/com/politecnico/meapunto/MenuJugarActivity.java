@@ -67,6 +67,9 @@ public class MenuJugarActivity extends AppCompatActivity {
                 String  curfecha = String.valueOf(dayOfMonth);
                 String  Year = String.valueOf(year);
                 String  Month = String.valueOf(month);
+                if(Integer.parseInt(Month)<= 9){
+                    Month = "0"+Month;
+                }
 
                 curDate = Year+"-"+Month+"-"+curfecha;
             }

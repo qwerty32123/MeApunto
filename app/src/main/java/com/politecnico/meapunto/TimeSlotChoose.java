@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,10 +46,12 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
 
         //the recyclerview
         RecyclerView recyclerView;
+        List<Integer> blacklist;
 
         TextView elegirHora;
 
     String choosenSlot;
+    TimeSlotAdapter adapter;
 
 
     @Override
@@ -109,8 +113,13 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
 
             //this method will fetch and parse json
             //to display it in recyclerview
-
+           removeTimeSlots();
             loadProducts();
+
+
+        adapter = new TimeSlotAdapter(TimeSlotChoose.this, productList, TimeSlotChoose.this);
+
+        recyclerView.setAdapter(adapter);
 
 
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -167,17 +176,18 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
                                     JSONObject product = array.getJSONObject(i);
 
                                     //adding the product to product list
-                                    productList.add(new TimeSlot(
-                                            product.getInt("id"),
-                                            product.getString("description")
+                                    if (!(blacklist.contains(product.getInt("id")))) {
+                                        productList.add(new TimeSlot(
+                                                product.getInt("id"),
+                                                product.getString("description")
 
-                                    ));
+                                        ));
+                                    }
                                 }
 
                                 //creating adapter object and setting it to recyclerview
 
-                                TimeSlotAdapter adapter = new TimeSlotAdapter(TimeSlotChoose.this, productList, TimeSlotChoose.this);
-                                recyclerView.setAdapter(adapter);
+
                             } catch (JSONException error) {
                                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                             }
@@ -197,6 +207,7 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
 
             //adding our stringrequest to queue
             Volley.newRequestQueue(this).add(stringRequest);
+
         }
 
     private void removeTimeSlots() {
@@ -211,6 +222,7 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
                         try {
                             //converting the string to json array object
                             JSONArray array = new JSONArray(response);
+                            Log.e("ResponseJson",response.toString());
 
                             //traversing through all the object
                             for (int i = 0; i < array.length(); i++) {
@@ -219,19 +231,32 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
                                 JSONObject product = array.getJSONObject(i);
 
                                 //adding the product to product list
-                                productList.remove(new TimeSlot(
-                                        product.getInt("id"),
-                                        product.getString("description")
 
-                                ));
+
+                                blacklist = new ArrayList<Integer>();
+                                Integer index = product.getInt("id");
+                                blacklist.add(index);
+//                                String desc = product.getString("desc");
+//                                TimeSlot timesl0t = new TimeSlot(index,desc);
+//                                productList.remove(timesl0t);
+                                Log.e("LISTAPRODUCTOS",blacklist.toString());
+
+
+
+
+
+
+
                             }
 
                             //creating adapter object and setting it to recyclerview
 
-//                            TimeSlotAdapter adapter = new TimeSlotAdapter(TimeSlotChoose.this, productList, TimeSlotChoose.this);
-//                            recyclerView.setAdapter(adapter);
+                            TimeSlotAdapter adapter = new TimeSlotAdapter(TimeSlotChoose.this, productList, TimeSlotChoose.this);
+                            recyclerView.setAdapter(adapter);
                         } catch (JSONException error) {
                             Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }catch (Exception ex){
+                            Log.e("ERROR",ex.getMessage());
                         }
                     }
                 },
@@ -246,8 +271,11 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
                 Map<String, String> params = new HashMap<>();
 
                 Intent intent = getIntent();
-                params.put("dia", intent.getStringExtra("dia"));
-                params.put("pista", intent.getStringExtra("pista"));
+                String dia = intent.getStringExtra("dia");
+                String pista =  intent.getStringExtra("pista");
+                Log.e("TImeslotchoose activit",dia+pista);
+                params.put("dia",dia);
+                params.put("pista",pista);
 
 
 
