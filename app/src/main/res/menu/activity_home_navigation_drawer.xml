@@ -9,9 +9,9 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/jugar" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/editar"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:title="@string/editar_perfil" />
     </group>
 
     <group
@@ -20,7 +20,7 @@
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:title="@string/reservar" />
     </group>
 
     <item android:title="@string/menu_group">

@@ -125,3 +125,23 @@ public class Usuario {
         this.fecha_nacimiento = FechaNacimiento;
     }
 }
+
+
+
+//todo añadir facebook y twitter
+// boton google recoger datos usuario
+// splash screen  login usuario que se vea mas tiempo y cambiar diseño
+
+// rellenar informacion de contacto
+
+// editar perfil acabar sql
+// bloquear 2 semanas dede hoy en la reserva
+// dia y pista consultar que horas estan librbes y las que no este bloquearlas
+// acabar reserva usuario
+
+
+////añadir un jugador a un partido
+// ver los detalles de los jugadores en un partido
+//modificar la reserva de jugador
+
+//añadir un jugador > si ya estan 4 modificar estado de partido en agenda

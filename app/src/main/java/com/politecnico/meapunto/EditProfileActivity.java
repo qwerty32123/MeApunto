@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.politecnico.meapunto.modelos.SharedPrefManager;
+import com.politecnico.meapunto.modelos.Usuario;
+
+import java.util.Objects;
+
 public class EditProfileActivity extends AppCompatActivity {
 
         //uper.onCreate(savedInstanceState);
@@ -22,6 +27,13 @@ public class EditProfileActivity extends AppCompatActivity {
 
         viewInitializations();
 
+        Usuario user = SharedPrefManager.getInstance(this).getUser();
+        etFirstName.setText(user.getNombre());
+        etLastName.setText(user.getApellidos());
+        etEmail.setText(user.getCorreo());
+        etContactNo.setText(user.getTelefono());
+        etDec.setText(user.getDescripcion());
+
     }
 
     void viewInitializations() {
@@ -32,7 +44,7 @@ public class EditProfileActivity extends AppCompatActivity {
         etDec = findViewById(R.id.et_des);
 
         // To show back button in actionbar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
     // Checking if the input in form is valid

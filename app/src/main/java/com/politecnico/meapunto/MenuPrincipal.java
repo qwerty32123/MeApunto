@@ -77,9 +77,10 @@ public class MenuPrincipal extends AppCompatActivity
             case R.id.Jugar:
                 title = R.string.menu_camera;
                 break;
-            case R.id.nav_gallery:
-                title = R.string.menu_gallery;
-                break;
+            case R.id.editar:
+                Log.i("EditarPerfilActivty","Starting to run");
+                startActivity(new Intent(getApplicationContext(), EditProfileActivity.class));
+                return false;
             case R.id.nav_manage:
                 Log.i("TimeSlootChooseActivity","Starting to run");
                 startActivity(new Intent(getApplicationContext(), MenuJugarActivity.class));
