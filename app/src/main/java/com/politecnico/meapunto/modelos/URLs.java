@@ -7,6 +7,11 @@ public class URLs {
     public static final String URL_LOGIN= ROOT_URL + "login";
     public static final String URL_PISTAS_GET= ROOT_URL + "get_pistas";
     public static final String URL_TIMESLOTGET= ROOT_URL + "get_timeslot";
+    //get_timeslot_toremove
+    public static final String URL_TIMESLOT_TOREMOVE= ROOT_URL + "get_timeslot_toremove";
+
+
+
 
 
 

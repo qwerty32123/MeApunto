@@ -8,23 +8,32 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.politecnico.meapunto.modelos.Pista;
+import com.politecnico.meapunto.modelos.SharedPrefManager;
 import com.politecnico.meapunto.modelos.TimeSlot;
 import com.politecnico.meapunto.modelos.TimeSlotAdapter;
 import com.politecnico.meapunto.modelos.URLs;
+import com.politecnico.meapunto.modelos.Usuario;
+import com.politecnico.meapunto.modelos.VolleySingleton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter.OnNoteListener {     //this is the JSON Data URL
         //make sure you are using the correct ip else it will not work
@@ -68,8 +77,17 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
         builder.setMessage("Estas seguro de que quieres elegir esta hora? " + choosenSlot).setPositiveButton("Si", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
 
+    //
 
-
+//        SELECT
+//        timeslot.description
+//        FROM agenda
+//        INNER JOIN timeslot
+//        ON agenda.timeSlot = timeslot.id
+//        WHERE agenda.disponible <> 0
+//        AND agenda.dia = agenda.dia
+//        AND agenda.id_pista = 'idPista'
+        //
 
         // acces wich one was selected
 
@@ -160,8 +178,8 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
 
                                 TimeSlotAdapter adapter = new TimeSlotAdapter(TimeSlotChoose.this, productList, TimeSlotChoose.this);
                                 recyclerView.setAdapter(adapter);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                            } catch (JSONException error) {
+                                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     },
@@ -170,11 +188,75 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
                         public void onErrorResponse(VolleyError error) {
 
                         }
-                    });
+                    })
+
+
+
+
+                    ;
 
             //adding our stringrequest to queue
             Volley.newRequestQueue(this).add(stringRequest);
         }
+
+    private void removeTimeSlots() {
+
+
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_TIMESLOT_TOREMOVE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            //converting the string to json array object
+                            JSONArray array = new JSONArray(response);
+
+                            //traversing through all the object
+                            for (int i = 0; i < array.length(); i++) {
+
+                                //getting product object from json array
+                                JSONObject product = array.getJSONObject(i);
+
+                                //adding the product to product list
+                                productList.remove(new TimeSlot(
+                                        product.getInt("id"),
+                                        product.getString("description")
+
+                                ));
+                            }
+
+                            //creating adapter object and setting it to recyclerview
+
+//                            TimeSlotAdapter adapter = new TimeSlotAdapter(TimeSlotChoose.this, productList, TimeSlotChoose.this);
+//                            recyclerView.setAdapter(adapter);
+                        } catch (JSONException error) {
+                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+
+                Intent intent = getIntent();
+                params.put("dia", intent.getStringExtra("dia"));
+                params.put("pista", intent.getStringExtra("pista"));
+
+
+
+                return params;
+            }
+        };
+
+        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+    }
 
 
 

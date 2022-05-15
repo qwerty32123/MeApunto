@@ -36,11 +36,15 @@ public class PistaChoose extends AppCompatActivity implements PistaAdapter.OnNot
 
     String choosenSlot;
 
+    String dia;
+
 
     @Override
     public void onNoteClick(int position) {
 
         choosenSlot = listaPistas.get(position).getNombre();
+
+        choosenSlot = choosenSlot.replace("Pista ","");
 
         //creamos la interfaz de si o no
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -51,6 +55,8 @@ public class PistaChoose extends AppCompatActivity implements PistaAdapter.OnNot
 
 
                         Intent intent = new Intent(PistaChoose.this, TimeSlotChoose.class);
+                        intent.putExtra("dia",dia);
+                        intent.putExtra("pista",choosenSlot);
                         startActivity(intent);
                         break;
 
@@ -74,6 +80,10 @@ public class PistaChoose extends AppCompatActivity implements PistaAdapter.OnNot
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pista_choose);
+
+        Intent intent = getIntent();
+
+        dia = intent.getStringExtra("dia");
 
 
         //getting the recyclerview from xml

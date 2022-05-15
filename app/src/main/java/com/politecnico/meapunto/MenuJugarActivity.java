@@ -22,13 +22,20 @@ public class MenuJugarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_jugar);
         calendario = findViewById(R.id.calendarView);
         calendario.setMinDate(System.currentTimeMillis() - 1000);
+
+        long now = System.currentTimeMillis() - 1000;
+        calendario.setMaxDate(now+(1000*60*60*24*14)); //After 14 Days from Now
+
+
         jugarButton = findViewById(R.id.botonJugar);
 
         jugarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!(curDate == null)) {
-                    startActivity(new Intent(MenuJugarActivity.this, PistaChoose.class));
+                    Intent intent = new Intent(MenuJugarActivity.this, PistaChoose.class);
+                    intent.putExtra("dia",curDate);
+                    startActivity(intent);
                 }else{
                     new AlertDialog.Builder(MenuJugarActivity.this)
                             .setTitle("ERROR")
@@ -56,7 +63,12 @@ public class MenuJugarActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month,
                                             int dayOfMonth) {
-                curDate = String.valueOf(dayOfMonth);
+
+                String  curfecha = String.valueOf(dayOfMonth);
+                String  Year = String.valueOf(year);
+                String  Month = String.valueOf(month);
+
+                curDate = Year+"-"+Month+"-"+curfecha;
             }
         });
     }
