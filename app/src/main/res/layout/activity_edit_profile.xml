@@ -38,12 +38,12 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout_image"
-                android:layout_width="200dp"
-                android:layout_height="101dp"
+                android:layout_width="105dp"
+                android:layout_height="56dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="14dp"
                 android:textColorHint="#808080"
-                app:layout_constraintBottom_toTopOf="@+id/layout_first_name"
+                app:layout_constraintBottom_toTopOf="@+id/layout_dni"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -51,23 +51,51 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="165dp"
+                    android:layout_height="match_parent"
                     android:src="@drawable/img" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_dni"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="14dp"
+                android:textColorHint="#808080"
+                app:layout_constraintBottom_toTopOf="@+id/layout_first_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_image"
+                app:layout_constraintWidth_percent="0.7">
+
+                <EditText
+                    android:id="@+id/et_dni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:hint="DNI"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#808080"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout_first_name"
-                android:layout_width="286dp"
-                android:layout_height="43dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:layout_marginBottom="14dp"
                 android:textColorHint="#808080"
                 app:layout_constraintBottom_toTopOf="@+id/layout_last_name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout_image"
+                app:layout_constraintTop_toBottomOf="@+id/layout_dni"
                 app:layout_constraintWidth_percent="0.7">
 
                 <EditText
@@ -76,11 +104,12 @@
                     android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:gravity="center"
-                    android:hint="First Name"
-                    android:padding="30dp"
+                    android:hint="First name"
+                    android:padding="10dp"
                     android:textColor="#000000"
                     android:textColorHint="#808080"
                     android:textSize="15sp" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -90,7 +119,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginBottom="14dp"
                 android:textColorHint="#808080"
-                app:layout_constraintBottom_toTopOf="@+id/layout_email"
+                app:layout_constraintBottom_toTopOf="@+id/layout_addres"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_first_name"
@@ -107,8 +136,35 @@
                     android:textColor="#000000"
                     android:textColorHint="#808080"
                     android:textSize="15sp" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_addres"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="14dp"
+                android:textColorHint="#808080"
+                app:layout_constraintBottom_toTopOf="@+id/layout_email"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_last_name"
+                app:layout_constraintWidth_percent="0.7">
+
+                <EditText
+                    android:id="@+id/et_addres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:hint="Addres"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#808080"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout_email"
@@ -120,7 +176,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/layout_contact_no"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout_last_name"
+                app:layout_constraintTop_toBottomOf="@+id/layout_addres"
                 app:layout_constraintWidth_percent="0.7">
 
                 <EditText
@@ -172,6 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:textColorHint="#808080"
+                app:layout_constraintBottom_toTopOf="@+id/layout_psw"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_contact_no"
@@ -191,14 +248,66 @@
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_psw"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:textColorHint="#808080"
+                app:layout_constraintBottom_toTopOf="@+id/layout_nPsw"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_des"
+                app:layout_constraintWidth_percent="0.7">
+
+                <EditText
+                    android:id="@+id/et_oPsw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:hint="Introduce old PSW to change PSW"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#808080"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_nPsw"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:textColorHint="#808080"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_psw"
+                app:layout_constraintWidth_percent="0.7">
+
+                <EditText
+                    android:id="@+id/et_nPsw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:hint="new PSW"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#808080"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/bt_register"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
                 android:background="@color/design_default_color_primary"
-                android:elevation="2dp"
+
                 android:onClick="performEditProfile"
                 android:text="Update Profile"
                 android:textAllCaps="false"
@@ -207,8 +316,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.512"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout_des"
-                app:layout_constraintWidth_percent="0.7" />
+                app:layout_constraintTop_toBottomOf="@+id/layout_nPsw"
+                app:layout_constraintWidth_percent="0.7"
+                />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

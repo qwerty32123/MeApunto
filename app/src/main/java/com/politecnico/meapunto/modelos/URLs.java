@@ -12,6 +12,7 @@ public class URLs {
 
     //añadirReserva
     public static final String URL_RESERVA= ROOT_URL + "anadirReserva";
+    public static final String URL_UPDATE_USER= "http://192.168.1.44/login/update_user.php";
 
 
 
