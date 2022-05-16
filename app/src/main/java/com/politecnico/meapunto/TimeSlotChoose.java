@@ -49,14 +49,16 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
         List<Integer> blacklist;
 
         TextView elegirHora;
+        String user_id;
 
-    String choosenSlot;
+    Integer choosenSlot;
     TimeSlotAdapter adapter;
 
 
     @Override
     public void onNoteClick(int position) {
-        choosenSlot = productList.get(position).getDescription();
+        choosenSlot = productList.get(position).getId();
+        Log.e("chosenslot", String.valueOf(choosenSlot));
 
         //creamos la interfaz de si o no
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -64,6 +66,7 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
             public void onClick(DialogInterface dialog, int which) {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
+                       // Reservar(choosenSlot);
 
 
 
@@ -100,6 +103,10 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
+
+        blacklist = new ArrayList<Integer>();
+            Usuario user = SharedPrefManager.getInstance(this).getUser();
+            user_id = user.getDNI();
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_time_slot_choose);
 
@@ -176,16 +183,22 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
                                     JSONObject product = array.getJSONObject(i);
 
                                     //adding the product to product list
-                                    if (!(blacklist.contains(product.getInt("id")))) {
-                                        productList.add(new TimeSlot(
-                                                product.getInt("id"),
-                                                product.getString("description")
 
-                                        ));
-                                    }
+                                        if (!(blacklist.contains(product.getInt("id")))) {
+                                            productList.add(new TimeSlot(
+                                                    product.getInt("id"),
+                                                    product.getString("description")
+
+                                            ));
+                                        }
+
+
                                 }
 
+
                                 //creating adapter object and setting it to recyclerview
+                                TimeSlotAdapter adapter = new TimeSlotAdapter(TimeSlotChoose.this, productList, TimeSlotChoose.this);
+                                recyclerView.setAdapter(adapter);
 
 
                             } catch (JSONException error) {
@@ -233,7 +246,6 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
                                 //adding the product to product list
 
 
-                                blacklist = new ArrayList<Integer>();
                                 Integer index = product.getInt("id");
                                 blacklist.add(index);
 //                                String desc = product.getString("desc");
@@ -251,8 +263,8 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
 
                             //creating adapter object and setting it to recyclerview
 
-                            TimeSlotAdapter adapter = new TimeSlotAdapter(TimeSlotChoose.this, productList, TimeSlotChoose.this);
-                            recyclerView.setAdapter(adapter);
+//                            TimeSlotAdapter adapter = new TimeSlotAdapter(TimeSlotChoose.this, productList, TimeSlotChoose.this);
+//                            recyclerView.setAdapter(adapter);
                         } catch (JSONException error) {
                             Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                         }catch (Exception ex){
@@ -276,6 +288,57 @@ public class TimeSlotChoose extends AppCompatActivity implements TimeSlotAdapter
                 Log.e("TImeslotchoose activit",dia+pista);
                 params.put("dia",dia);
                 params.put("pista",pista);
+
+
+
+                return params;
+            }
+        };
+
+        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+    }
+
+    public void Reservar(String Timeslot_chose){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_RESERVA,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            //converting the string to json array object
+                            JSONArray array = new JSONArray(response);
+                            Log.e("ResponseJson",response.toString());
+
+
+                            //creating adapter object and setting it to recyclerview
+
+
+                        } catch (JSONException error) {
+                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }catch (Exception ex){
+                            Log.e("ERROR",ex.getMessage());
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+
+                Intent intent = getIntent();
+                String dia = intent.getStringExtra("dia");
+                String pista =  intent.getStringExtra("pista");
+                Log.e("TImeslotchoose activit",dia+pista);
+                params.put("dia",dia);
+                params.put("id_pista",pista);
+                params.put("desc",Timeslot_chose);
+                params.put("id_usuario",user_id);
+                Log.e("ActivityParams",dia+" "+pista + " "+Timeslot_chose + user_id);
+
 
 
 
