@@ -281,6 +281,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:textColorHint="#808080"
+                app:layout_constraintBottom_toTopOf="@+id/layout_spiner"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_psw"
@@ -301,6 +302,270 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_spiner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:textColorHint="#808080"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_nPsw"
+                app:layout_constraintWidth_percent="0.7">
+                <TextView
+                    android:id="@+id/txt_gen"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#DCE9AA74"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/Select_gender"
+                    android:textStyle="italic"
+                    android:visibility="visible"
+                    app:autoSizeTextType="none"
+                    app:fontFamily="serif"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+                <Spinner
+                    android:id="@+id/spiner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/black"
+                    android:prompt="@string/Select_gender"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintStart_toEndOf="@+id/txt_gen" />
+
+                <TextView
+                    android:id="@+id/txt_spin_gen"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:visibility="visible"
+                    android:background="#DCE9AA74"
+                    android:text="@string/Select_gender"
+                    android:textSize="20sp"
+                    tools:visibility="visible"
+                    android:textStyle="italic"
+                    app:autoSizeTextType="none"
+                    app:fontFamily="serif"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_spiner_nv_juego"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:textColorHint="#808080"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_spiner"
+                app:layout_constraintWidth_percent="0.7">
+                <TextView
+                    android:id="@+id/txt_nv_juego"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#DCE9AA74"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/Select_level"
+                    android:textStyle="italic"
+                    android:visibility="visible"
+                    app:autoSizeTextType="none"
+                    app:fontFamily="serif"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+                <Spinner
+                    android:id="@+id/spiner_nv_juego"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/black"
+                    android:prompt="@string/Select_status"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintStart_toEndOf="@+id/txt_gen" />
+
+                <TextView
+                    android:id="@+id/txt_spin_nv_juego_din"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:visibility="visible"
+                    android:background="#DCE9AA74"
+                    android:text="@string/Select_level"
+                    android:textSize="20sp"
+                    tools:visibility="visible"
+                    android:textStyle="italic"
+                    app:autoSizeTextType="none"
+                    app:fontFamily="serif"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_spiner_preferencia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:textColorHint="#808080"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_spiner_nv_juego"
+                app:layout_constraintWidth_percent="0.7">
+                <TextView
+                    android:id="@+id/txt_preferencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#DCE9AA74"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/Select_preferencia"
+                    android:textStyle="italic"
+                    android:visibility="visible"
+                    app:autoSizeTextType="none"
+                    app:fontFamily="serif"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+                <Spinner
+                    android:id="@+id/spiner_preferencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/black"
+                    android:prompt="@string/Select_preferencia"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintStart_toEndOf="@+id/txt_gen" />
+
+                <TextView
+                    android:id="@+id/txt_spin_preferencia_din"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:visibility="visible"
+                    android:background="#DCE9AA74"
+                    android:text="@string/Select_preferencia"
+                    android:textSize="20sp"
+                    tools:visibility="visible"
+                    android:textStyle="italic"
+                    app:autoSizeTextType="none"
+                    app:fontFamily="serif"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_spiner_activo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:textColorHint="#808080"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_spiner_preferencia"
+                app:layout_constraintWidth_percent="0.7">
+                <TextView
+                    android:id="@+id/txt_activo"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#DCE9AA74"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/Select_status"
+                    android:textStyle="italic"
+                    android:visibility="visible"
+                    app:autoSizeTextType="none"
+                    app:fontFamily="serif"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+                <Spinner
+                    android:id="@+id/spiner_activo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/black"
+                    android:prompt="@string/Select_status"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintStart_toEndOf="@+id/txt_gen" />
+
+                <TextView
+                    android:id="@+id/txt_spin_activo_din"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:visibility="visible"
+                    android:background="#DCE9AA74"
+                    android:text="@string/Select_status"
+                    android:textSize="20sp"
+                    tools:visibility="visible"
+                    android:textStyle="italic"
+                    app:autoSizeTextType="none"
+                    app:fontFamily="serif"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_fecha_nac"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:textColorHint="#808080"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_spiner_activo"
+                app:layout_constraintWidth_percent="0.7">
+                <TextView
+                    android:id="@+id/txt_fecha_nac"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#DCE9AA74"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/Update_fecha"
+                    android:textStyle="italic"
+                    android:visibility="visible"
+                    app:autoSizeTextType="none"
+                    app:fontFamily="serif"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+                <Button
+                    android:id="@+id/bt_update_fecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="37dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/elegirFecha"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_fecha_nac_din"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:visibility="visible"
+                    android:background="#DCE9AA74"
+                    android:text="@string/Update_fecha"
+                    android:textSize="20sp"
+                    tools:visibility="visible"
+                    android:textStyle="italic"
+                    app:autoSizeTextType="none"
+                    app:fontFamily="serif"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <Button
                 android:id="@+id/bt_register"
                 style="?android:attr/borderlessButtonStyle"
@@ -308,7 +573,6 @@
                 android:layout_height="150dp"
                 android:background="@color/design_default_color_primary"
 
-                android:onClick="performEditProfile"
                 android:text="Update Profile"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
@@ -316,7 +580,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.512"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout_nPsw"
+                app:layout_constraintTop_toBottomOf="@+id/layout_fecha_nac"
                 app:layout_constraintWidth_percent="0.7"
                 />
 

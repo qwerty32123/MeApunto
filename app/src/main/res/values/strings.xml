@@ -21,19 +21,23 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_click">Title click</string>
-    <string name="menu_camera">Camera</string>
+    <string name="menu_camera">Menu Meapunto</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Informacion de contacto: </string>
     <string name="menu_send">Send</string>
     <string name="menu_group">Group</string>
-    <string name="copyright">© Daniel Medina - danielme.com</string>
+    <string name="copyright">© MeAPunto</string>
     <string name="donde_estamos">Donde estamos</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyC8E4qul8j6kJp0nBue_HdPkz3J6x15Fdc</string>
     <string name="contactanos">Contactanos</string>
     <string name="jugar">Jugar</string>
     <string name="reservar">Reservar</string>
     <string name="editar_perfil">Editar Perfil</string>
-
+    <string name="Select_gender">Update gender</string>
+    <string name="Select_level">Update level</string>
+    <string name="Select_preferencia">Update preferencia</string>
+    <string name="Select_status">Update status</string>
+    <string name="Update_fecha">Update Birthdate</string>
 
 </resources>

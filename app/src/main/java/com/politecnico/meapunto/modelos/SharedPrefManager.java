@@ -67,6 +67,7 @@ public class SharedPrefManager {
         editor.putString(KEY_GENERO, user.getGenero().toString());
         editor.putString(KEY_NIVEL, user.getNivelDeJuego().toString());
         editor.putString(KEY_PREFERENCIA, user.getPreferencia().toString());
+        editor.putString(KEY_FNACIMIENTO, user.getFecha_nacimiento().toString());
 
 
 
